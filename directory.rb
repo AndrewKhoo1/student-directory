@@ -30,7 +30,7 @@ def nameCheck(students)
   puts "Enter a letter to bring up students"
   letter = gets.chomp
   students.each do |student|
-    if student[:name].downcase[0] === letter
+    if student[:name].downcase[0] === letter.downcase
       puts student[:name]
     end
 
