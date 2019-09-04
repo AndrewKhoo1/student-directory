@@ -40,9 +40,11 @@ def print(students)
 end
 
 def nameCheck(students)
+  puts "Enter a letter to bring up students"
+  letter = gets.chomp
   students.each do |student|
-    if student[0][0] === "T"
-      puts student
+    if student[:name].downcase[0] === letter
+      puts student[:name]
     end
 
   end
