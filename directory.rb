@@ -1,17 +1,31 @@
 student_count = 11
 # let's put all students into an array
+students = [
+  {name: "Dr. Hannibal Lecter", cohort: :november},
+  {name: "Darth Vader", cohort: :november},
+  {name: "Nurse Ratched", cohort: :november},
+  {name: "Michael Corleone", cohort: :november},
+  {name: "Alex DeLarge", cohort: :november},
+  {name: "The Wicked Witch of the West", cohort: :november},
+  {name: "Terminator", cohort: :november},
+  {name: "Freddy Krueger", cohort: :november},
+  {name: "The Joker", cohort: :november},
+  {name: "Joffrey Baratheon", cohort: :november},
+  {name: "Norman Bates", cohort: :november}
+]
+
 # students = [
-#   {name: "Dr. Hannibal Lecter", cohort: :november},
-#   {name: "Darth Vader", cohort: :november},
-#   {name: "Nurse Ratched", cohort: :november},
-#   {name: "Michael Corleone", cohort: :november},
-#   {name: "Alex DeLarge", cohort: :november},
-#   {name: "The Wicked Witch of the West", cohort: :november},
-#   {name: "Terminator", cohort: :november},
-#   {name: "Freddy Krueger", cohort: :november},
-#   {name: "The Joker", cohort: :november},
-#   {name: "Joffrey Baratheon", cohort: :november},
-#   {name: "Norman Bates", cohort: :november}
+#   ["Dr. Hannibal Lecter", :november],
+#   ["Darth Vader", :november],
+#   ["Nurse Ratched", :november],
+#   ["Michael Corleone", :november],
+#   ["Alex DeLarge", :november],
+#   ["The Wicked Witch of the West", :november],
+#   ["Terminator", :november],
+#   ["Freddy Krueger", :november],
+#   ["The Joker", :november],
+#   ["Joffrey Baratheon", :november],
+#   ["Norman Bates", :november]
 # ]
 
 def print_header
@@ -20,36 +34,46 @@ def print_header
 end
 
 def print(students)
+  students.each_with_index do |student, index|
+    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  end
+end
+
+def nameCheck(students)
   students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    if student[0][0] === "T"
+      puts student
+    end
+
   end
 end
 
-def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
-end
+# def print_footer(students)
+#   puts "Overall, we have #{students.count} great students"
+# end
 
-def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  # create an empty array
-  students = []
-  # get the first name
-  name = gets.chomp
-  # while the name is not empty, repeat this code
-  while !name.empty? do
-    # add the student hash to the array
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
-    # get another name from the user
-    name = gets.chomp
-  end
-  # return the array of students
-  students
-end
+# def input_students
+#   puts "Please enter the names of the students"
+#   puts "To finish, just hit return twice"
+#   # create an empty array
+#   students = []
+#   # get the first name
+#   name = gets.chomp
+#   # while the name is not empty, repeat this code
+#   while !name.empty? do
+#     # add the student hash to the array
+#     students << {name: name, cohort: :november}
+#     puts "Now we have #{students.count} students"
+#     # get another name from the user
+#     name = gets.chomp
+#   end
+#   return the array of students
+#   students
+# end
 
 # finally, we print the total
-students = input_students
+# students = input_students
 print_header
 print(students)
-print_footer(students)
+# print_footer(students)
+nameCheck(students)
