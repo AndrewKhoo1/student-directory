@@ -15,6 +15,7 @@ students = [
 ]
 
 
+
 def print_header
   puts "The students of Villains Academy"
   puts "-------------"
@@ -26,14 +27,26 @@ def print(students)
   end
 end
 
+# def nameCheck(students)
+#   puts "Enter a letter to bring up students"
+#   letter = gets.chomp
+#   students.each do |student|
+#     if student[:name].downcase[0] === letter
+#       puts student[:name]
+#     end
+#
+#   end
+# end
+
 def nameCheck(students)
+  i = 0
   puts "Enter a letter to bring up students"
   letter = gets.chomp
-  students.each do |student|
-    if student[:name].downcase[0] === letter
-      puts student[:name]
+  while i < students.length
+    if students[i][:name][0] === letter.upcase
+      puts students[i][:name]
     end
-
+   i += 1
   end
 end
 
