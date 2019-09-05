@@ -31,7 +31,7 @@ def print(students)
   counter = 0
   index = 1
    until counter === students.length
-    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort) Hobby: #{students[counter][:hobby]} Height: #{students[counter][:height]} "
+    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort) Hobby: #{students[counter][:hobby]} Height: #{students[counter][:height]}".center(65)
     index +=1
     counter +=1
   end
@@ -107,3 +107,4 @@ print(students)
 print_footer(students)
 nameCheck(students)
 twelveOrLess(students)
+input_students
