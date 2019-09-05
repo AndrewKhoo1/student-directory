@@ -61,45 +61,99 @@ def nameCheck(students)
   end
 end
 
-# def twelveOrLess(students)
-#   students.each do |student|
-#     if student[:name].length < 12
-#       puts student[:name]
-#    end
-# end
-# end
-
 def twelveOrLess(students)
-  i = 0
-  while i < students.length
-    if students[i][:name].length < 12
-      puts students[i][:name]
+  students.each do |student|
+    if student[:name].length < 12
+      puts student[:name]
    end
-  i += 1
 end
 end
+
+# def twelveOrLess(students)
+#   i = 0
+#   while i < students.length
+#     if students[i][:name].length < 12
+#       puts students[i][:name]
+#    end
+#   i += 1
+# end
+# end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
+
+# def input_students
+#   puts "Please enter the names of the students"
+#   puts "To finish, just hit return twice"
+#   # create an empty array
+#   students = []
+#   # get the first name
+#   name = gets.chomp
+#   # while the name is not empty, repeat this code
+#   while !name.empty? do
+#     # add the student hash to the array
+#     students << {name: name, cohort: :november}
+#     puts "Now we have #{students.count} students"
+#     # get another name from the user
+#     name = gets.chomp
+#   end
+#   puts students
+#
+# end
 
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   # create an empty array
   students = []
+  months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+  ];
   # get the first name
   name = gets.chomp
+  puts "Please enter cohort"
+  cohort = gets.chomp
+  if cohort.empty?
+   cohort = "November"
+  end
+
+  unless months.include? cohort.capitalize
+  puts "Please type again"
+  cohort = gets.chomp
+  end
+
+
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: cohort.to_sym}
     puts "Now we have #{students.count} students"
     # get another name from the user
+    puts "Enter a name"
     name = gets.chomp
+    unless name.empty?
+    puts "Please enter cohort"
+    cohort = gets.chomp
+    end
+
   end
+  puts students
 
 end
+
+
 
 student_list = input_students
 print_header
