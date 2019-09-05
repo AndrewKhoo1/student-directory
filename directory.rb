@@ -1,17 +1,17 @@
 
 # let's put all students into an array
 students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :november},
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
+  {name: "Dr. Hannibal Lecter", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Darth Vader", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Nurse Ratched", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Michael Corleone", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Alex DeLarge", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "The Wicked Witch of the West", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Terminator", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Freddy Krueger", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "The Joker", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Joffrey Baratheon", cohort: :november, hobby: "football", height: "6 foot"},
+  {name: "Norman Bates", cohort: :november, hobby: "football", height: "6 foot"}
 ]
 
 
@@ -31,7 +31,7 @@ def print(students)
   counter = 0
   index = 1
    until counter === students.length
-    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort)"
+    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort) Hobby: #{students[counter][:hobby]} Height: #{students[counter][:height]} "
     index +=1
     counter +=1
   end
