@@ -21,10 +21,21 @@ def print_header
   puts "-------------"
 end
 
+# def print(students)
+#   students.each_with_index do |student, index|
+#     puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+#   end
+# end
+
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  counter = 0
+  index = 1
+   until counter === students.length
+    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort)"
+    index +=1
+    counter +=1
   end
+
 end
 
 # def nameCheck(students)
@@ -50,11 +61,21 @@ def nameCheck(students)
   end
 end
 
+# def twelveOrLess(students)
+#   students.each do |student|
+#     if student[:name].length < 12
+#       puts student[:name]
+#    end
+# end
+# end
+
 def twelveOrLess(students)
-  students.each do |student|
-    if student[:name].length < 12
-      puts student[:name]
+  i = 0
+  while i < students.length
+    if students[i][:name].length < 12
+      puts students[i][:name]
    end
+  i += 1
 end
 end
 
