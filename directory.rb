@@ -1,164 +1,146 @@
 
-# let's put all students into an array
-students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Darth Vader", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Nurse Ratched", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Michael Corleone", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Alex DeLarge", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "The Wicked Witch of the West", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Terminator", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Freddy Krueger", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "The Joker", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Joffrey Baratheon", cohort: :november, hobby: "football", height: "6 foot"},
-  {name: "Norman Bates", cohort: :november, hobby: "football", height: "6 foot"}
-]
 
 
+@students = []
+@months = [
+'January',
+'February',
+'March',
+'April',
+'May',
+'June',
+'July',
+'August',
+'September',
+'October',
+'November',
+'December'
+];
+
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "3. Save the students"
+  puts "4. Exit"
+end
+
+def process
+  selection = gets.chomp
+  case selection
+    when "1"
+      input_students
+    when "2"
+      show_students
+    when "3"
+      save_students
+    when "4"
+      exit
+    else
+      puts "I don't know what you mean, try again"
+  end
+end
+
+def interactive_menu
+  loop do
+    print_menu
+    process
+  end
+end
 
 def print_header
-  puts "The students of Villains Academy"
+  puts "The students of my cohort at Makers Academy"
   puts "-------------"
 end
 
-# def print(students)
-#   students.each_with_index do |student, index|
-#     puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
-#   end
-# end
-
-def print(students)
-  counter = 0
-  index = 1
-   until counter === students.length
-    puts "#{index}. #{students[counter][:name]} (#{students[counter][:cohort]} cohort) Hobby: #{students[counter][:hobby]} Height: #{students[counter][:height]}".center(65)
-    index +=1
-    counter +=1
-  end
-
+def print_students_list
+  @students.each do |student|
+    puts "#{student[0].capitalize} (#{student[1].capitalize} cohort)"
+end
 end
 
-# def nameCheck(students)
-#   puts "Enter a letter to bring up students"
-#   letter = gets.chomp
-#   students.each do |student|
-#     if student[:name].downcase[0] === letter
-#       puts student[:name]
-#     end
-#
-#   end
-# end
 
-def nameCheck(students)
-  i = 0
-  puts "Enter a letter to bring up students"
-  letter = gets.chomp
-  while i < students.length
-    if students[i][:name][0] === letter.upcase
-      puts students[i][:name]
+def print_footer
+  if @students.length > 0
+    if @students.length > 1
+      plural = "s"
     end
-   i += 1
-  end
-end
-
-def twelveOrLess(students)
-  students.each do |student|
-    if student[:name].length < 12
-      puts student[:name]
-   end
+  puts "Overall, we have #{@students.count} great student#{plural}"
+  else
+  puts "No students"
 end
 end
 
-# def twelveOrLess(students)
-#   i = 0
-#   while i < students.length
-#     if students[i][:name].length < 12
-#       puts students[i][:name]
-#    end
-#   i += 1
-# end
-# end
 
-def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+def show_students
+  print_header
+  print_students_list
+  print_footer
 end
-
-# def input_students
-#   puts "Please enter the names of the students"
-#   puts "To finish, just hit return twice"
-#   # create an empty array
-#   students = []
-#   # get the first name
-#   name = gets.chomp
-#   # while the name is not empty, repeat this code
-#   while !name.empty? do
-#     # add the student hash to the array
-#     students << {name: name, cohort: :november}
-#     puts "Now we have #{students.count} students"
-#     # get another name from the user
-#     name = gets.chomp
-#   end
-#   puts students
-#
-# end
 
 def input_students
+
+  # get the name and cohort
+
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  # create an empty array
-  students = []
-  months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-  ];
-  # get the first name
-  name = gets.chomp
+
+  name = gets.strip
   puts "Please enter cohort"
-  cohort = gets.chomp
+  cohort = gets.strip
   if cohort.empty?
    cohort = "November"
   end
 
-  unless months.include? cohort.capitalize
-  puts "Please type again"
-  cohort = gets.chomp
+  while !@months.include? cohort.capitalize do
+  puts "Typo! Please type again"
+  cohort = gets.strip
   end
 
 
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: cohort.to_sym}
-    puts "Now we have #{students.count} students"
+    @students.push([name, cohort])
+    if @students.length > 1
+      plural = "s"
+    end
+    puts "Now we have #{@students.count} student#{plural}"
     # get another name from the user
     puts "Enter a name"
-    name = gets.chomp
-    unless name.empty?
+    name = gets.strip
+    if !name.empty?
     puts "Please enter cohort"
-    cohort = gets.chomp
+    cohort = gets.strip
     end
 
   end
-  puts students
 
-end
+  #Check to see the names in a cohort
+  while !@students.empty? do
+  puts "Enter cohort to see the names in that cohort"
+  cohort = gets.strip
+  @students.each { |x| if x[1] === cohort
+  puts x[0].capitalize end}
+  break if cohort.empty?
+  puts ""
+  end
+
+  end
+
+
+  def save_students
+  # open the file for writing
+  file = File.open("students.csv", "w")
+  # iterate over the array of students
+  @students.each do |student|
+    student_data = [student[0].capitalize, student[1].capitalize]
+    csv_line = student_data.join(", ")
+    file.puts csv_line
+  end
+  file.close
+  end
 
 
 
-student_list = input_students
-print_header
-print(students)
-print_footer(students)
-nameCheck(students)
-twelveOrLess(students)
-input_students
+
+interactive_menu
